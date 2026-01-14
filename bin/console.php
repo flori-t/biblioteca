@@ -45,7 +45,7 @@ switch ($command) {
         echo "  help                      Mostra questa guida\n";
         echo "  books:list                Elenca libri\n";
         echo "  loans:list                Elenca prestiti aperti\n";
-        echo "  book:lend <BOOK> <MEM>    Presta un libro a un membro\n";
+        echo "  book:lend <BOOK> <MEM>    Presta un libro a un membro,\n";
         echo "  book:return <BOOK>        Registra la restituzione di un libro\n";
         echo "\nEsempi:\n";
         echo "  php bin/console.php books:list\n";
