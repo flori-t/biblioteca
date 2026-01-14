@@ -42,11 +42,11 @@ $todayYmd = date('Y-m-d'); // nel CSV salviamo sempre in formato stabile
 switch ($command) {
     case 'help':
         echo "Biblioteca CLI - comandi disponibili:\n";
-        echo "  help                      Mostra questa guida\n";
-        echo "  books:list                Elenca libri\n";
-        echo "  loans:list                Elenca prestiti aperti\n";
-        echo "  book:lend <BOOK> <MEM>    Presta un libro a un membro,\n";
-        echo "  book:return <BOOK>        Registra la restituzione di un libro\n";
+        echo "  help                      Mostra questa guida, che servirà a capire come utilizzare quest'app\n";
+        echo "  books:list                Elenca libri disponibili per il prestito\n";
+        echo "  loans:list                Elenca prestiti aperti, mostrando l'elenco delle persone che hanno preso in prestito il libro\n";
+        echo "  book:lend <BOOK> <MEM>    Presta un libro a un membro, specificando la data in cui è stati prestato\n";
+        echo "  book:return <BOOK>        Registra la restituzione di un libro, specificando la data in cui è stato restituito\n";
         echo "\nEsempi:\n";
         echo "  php bin/console.php books:list\n";
         echo "  php bin/console.php book:lend B1 M1\n";
