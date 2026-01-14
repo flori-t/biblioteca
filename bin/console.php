@@ -51,6 +51,14 @@ switch ($command) {
         echo "  php bin/console.php books:list\n";
         echo "  php bin/console.php book:lend B1 M1\n";
         echo "  php bin/console.php book:return B1\n";
+        echo "  members:list               Stampa id e nome di tutti i membri\n";
+        exit(0);
+
+            
+    case 'members:list':
+        foreach ($service->listMembers() as $line){
+            echo $line . "\n";
+        }
         exit(0);
 
     case 'books:list':

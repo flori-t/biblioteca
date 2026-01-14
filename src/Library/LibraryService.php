@@ -24,6 +24,21 @@ final class LibraryService
         private LoanRepository $loans,
         private int $maxLoansPerMember
     ) {}
+    
+    public function listMembers(): array
+    {
+        // Restituiamo array di stringhe "pronte" per la console (semplice per i principianti)
+        $out = [];
+        foreach ($this->members->findAll() as $member) {
+            $status = $member;
+            $out[] = sprintf(
+                '%s | %s',
+                $member->id(),
+                $member->fullName(),
+            );
+        }
+        return $out;
+    }
 
     public function listBooks(): array
     {
