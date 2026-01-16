@@ -57,7 +57,7 @@ switch ($command) {
 
             
     case 'members:list':
-        if (count($service->listMembers()) > 0) {
+        if ((bool)$service->listMembers()) {
             foreach ($service->listMembers() as $line) {
                 echo $line . "\n";
             }
