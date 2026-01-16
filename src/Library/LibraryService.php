@@ -75,7 +75,7 @@ final class LibraryService
 
         $openLoans = $this->loans->countOpenLoansByMember($memberId);
         if ($openLoans >= $this->maxLoansPerMember) {
-            return "Errore: il membro $memberId ha già raggiunto il limite prestiti ({$this->maxLoansPerMember}).";
+            return "Errore: limite prestiti raggiunto per il membro $memberId. Prestiti aperti: openLoans=$openLoans, limite consentito: limit={$this->maxLoansPerMember}. Restituisci un libro prima di richiederne un altro.";
         }
 
         // Crea prestito
