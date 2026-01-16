@@ -41,7 +41,8 @@ $todayYmd = date('Y-m-d'); // nel CSV salviamo sempre in formato stabile
 
 switch ($command) {
     case 'help':
-        echo "Biblioteca CLI - comandi disponibili:\n";
+        echo "Biblioteca CLI - comandi disponibili:\n\n";
+        echo "COMANDI:\n";
         echo "  help                      Mostra questa guida\n";
         echo "  books:list                Elenca libri\n";
         echo "  loans:list                Elenca prestiti aperti\n";
@@ -52,6 +53,11 @@ switch ($command) {
         echo "  php bin/console.php book:lend B1 M1\n";
         echo "  php bin/console.php book:return B1\n";
         echo "  members:list               Stampa id e nome di tutti i membri\n";
+       
+        echo "\nCONFIGURAZIONE (.env):\n";
+        echo "  DATA_DIR                  Percorso della cartella con i file CSV (./data)\n";
+        echo "  DATE_FORMAT               Formato data per stampe (d/m/Y)\n";
+        echo "  MAX_LOANS_PER_MEMBER      Massimo numero di prestiti simultanei per membro (2)\n";
         exit(0);
 
             
