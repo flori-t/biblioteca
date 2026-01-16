@@ -48,18 +48,19 @@ switch ($command) {
         echo "  loans:list                Elenca prestiti aperti\n";
         echo "  book:lend <BOOK> <MEM>    Presta un libro a un membro\n";
         echo "  book:return <BOOK>        Registra la restituzione di un libro\n";
+        echo "  book:status <BOOK>        Mostra dettagli del libro e stato prestito\n";
         echo "  members:list              Stampa id e nome di tutti i membri\n";
         echo "\nEsempi:\n";
         echo "  php bin/console.php books:list\n";
+        echo "  php bin/console.php book:status B1\n";
         echo "  php bin/console.php book:lend B1 M1\n";
         echo "  php bin/console.php book:return B1\n";
-        echo "  members:list               Stampa id e nome di tutti i membri\n";
+        echo "  php bin/console.php members:list\n";
        
         echo "\nCONFIGURAZIONE (.env):\n";
         echo "  DATA_DIR                  Percorso della cartella con i file CSV (./data)\n";
         echo "  DATE_FORMAT               Formato data per stampe (d/m/Y)\n";
         echo "  MAX_LOANS_PER_MEMBER      Massimo numero di prestiti simultanei per membro (2)\n";
-        echo "  php bin/console.php members:list \n";
         exit(0);
 
             
@@ -106,6 +107,16 @@ switch ($command) {
         }
 
         echo $service->returnBook($bookId, $todayYmd) . "\n";
+        exit(0);
+
+    case 'book:status':
+        $bookId = $args[1] ?? '';
+        if ($bookId === '') {
+            echo "Uso: php bin/console.php book:status <BOOK_ID>\n";
+            exit(1);
+        }
+
+        echo $service->bookStatus($bookId) . "\n";
         exit(0);
 
     default:

@@ -138,4 +138,36 @@ final class LibraryService
 
         return $out;
     }
+
+    public function bookStatus(string $bookId): string
+    {
+        $book = $this->books->findById($bookId);
+        if ($book === null) {
+            return "Errore: libro non trovato (id=$bookId).";
+        }
+
+        $status = $book->isAvailable() ? 'DISPONIBILE' : 'PRESTITO';
+        $output = sprintf(
+            "ID: %s\nTitolo: %s\nAutore: %s\nStato: %s",
+            $book->id(),
+            $book->title(),
+            $book->author(),
+            $status
+        );
+
+        // Se il libro è prestato, mostra info del prestito
+        if (!$book->isAvailable()) {
+            $openLoan = $this->loans->findOpenLoanByBookId($bookId);
+            if ($openLoan !== null) {
+                $output .= sprintf(
+                    "\n\nPrestito aperto:\nID prestito: %s\nMembro: %s\nData prestito: %s",
+                    $openLoan->loanId(),
+                    $openLoan->memberId(),
+                    $openLoan->loanDate()
+                );
+            }
+        }
+
+        return $output;
+    }
 }
