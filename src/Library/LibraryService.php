@@ -44,11 +44,25 @@ final class LibraryService
     {
         // Restituiamo array di stringhe "pronte" per la console (semplice per i principianti)
         $out = [];
+        
+        // Aggiunge intestazione
+        $out[] = sprintf(
+            '%s | %s | %s | %s | %s',
+            'ID',
+            'ID breve',
+            'Titolo',
+            'Autore',
+            'Stato'
+        );
+        
         foreach ($this->books->findAll() as $book) {
             $status = $book->isAvailable() ? 'DISPONIBILE' : 'PRESTITO';
+            // Estrae il numero dall'ID (es. B1 -> 1)
+            $shortId = substr($book->id(), 1);
             $out[] = sprintf(
-                '%s | %s | %s | %s',
+                '%s | %s | %s | %s | %s',
                 $book->id(),
+                '#' . $shortId,
                 $book->title(),
                 $book->author(),
                 $status
